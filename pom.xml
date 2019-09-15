@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.8.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>vs-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0.RELEASE</version>
 	<name>vs-demo</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -36,6 +37,31 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<!-- 每次新的构建上覆盖镜像 -->
+					<forceTags>true</forceTags>
+					<!--镜像名称以及版本号 -->
+					<imageName>vs-demo:1.0.0</imageName>
+					<!--依赖的基础镜像 -->
+					<dockerHost>http://192.168.125.121:2375</dockerHost>
+					<!--Dockerfile的位置 -->
+					<dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>
+					<!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
+					<serverId>docker-hub</serverId>
+					<registryUrl>https://cloud.docker.com/repository/registry-1.docker.io/lvjt/vs-demo</registryUrl>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
