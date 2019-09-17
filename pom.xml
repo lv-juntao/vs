@@ -48,7 +48,7 @@
 					<!--镜像名称以及版本号 -->
 					<imageName>vs-demo:1.0.0</imageName>
 					<!--依赖的基础镜像 -->
-					<dockerHost>http://192.168.125.121:2375</dockerHost>
+					<dockerHost>http://10.0.2.15:2375</dockerHost>
 					<!--Dockerfile的位置 -->
 					<dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>
 					<!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
