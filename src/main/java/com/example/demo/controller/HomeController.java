@@ -17,7 +17,6 @@ public class HomeController {
 		logger.info("============================DOCKER-DEMO================================");
 		logger.info("============================DOCKER-DEMO================================");
 		logger.info("============================DOCKER-DEMO================================");
-		
         return "Hello Docker World."
                 + "<br />Welcome to <a href='http://waylau.com'>waylau.com</a></li>";
     }
