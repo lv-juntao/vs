@@ -9,7 +9,7 @@ spring:
     name: demo
 
 logging:
-  path: /logs/
+  path: /logs/vs-demo/
   file: ${spring.application.name}.log
   level:
     default: info
