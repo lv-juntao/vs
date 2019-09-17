@@ -2,4 +2,16 @@
 server:
   port: 8081
   servlet:
-    context-path: /demo
+    context-path: /${spring.application.name}
+    
+spring: 
+  application:
+    name: demo
+
+logging:
+  path: /opt/app/logs/vs-demo/
+  file: ${spring.application.name}.log
+  level:
+    default: info
+    root: ${logging.level.default}
+    com.example.demo: debug
