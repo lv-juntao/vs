@@ -1,4 +1,5 @@
-FROM openjdk:8-jdk-alpine
+FROM java:8
+#FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 MAINTAINER "lvjt"<lv.juntao@outlook.com>
 ADD vs-demo-1.0.0.RELEASE.jar app.jar
